@@ -1,0 +1,30 @@
+<h2 [hidden]="!(user._id == undefined)">Create New User</h2>
+<h2 [hidden]="!(user._id != undefined)">Edit User</h2>
+<hr>
+<div class="col-sm-5">
+    <form #form="ngForm" (ngSubmit)="SaveData(form)">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" name="Name" #Name="ngModel" id="" [(ngModel)]="user.name" required class="form-control">
+            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                Please Enter Name
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Contact</label>
+            <input type="text" name="Contact" #Contact="ngModel" id="" [(ngModel)]="user.contact" required class="form-control">
+            <div *ngIf="Contact.errors && form.submitted" class="text-danger">
+                Please Enter Contact
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Address</label>
+            <textarea type="text" name="Address" #Address="ngModel" id="" [(ngModel)]="user.address" class="form-control"></textarea>
+        </div>
+        <div>
+            <input [hidden]="!(user._id == undefined)" type="submit" value="Save" class="btn btn-success" style="margin-top: 5px;">
+            <input [hidden]="!(user._id != undefined)" type="submit" value="Update" class="btn btn-success" style="margin-top: 5px;">
+        </div>
+    </form>
+</div>
+
